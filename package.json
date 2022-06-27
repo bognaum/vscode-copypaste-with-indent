@@ -12,16 +12,38 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:copypaste-with-indent.helloWorld"
+        "onCommand:copypaste-with-indent.pasteWithIndent",
+        "onCommand:copypaste-with-indent.copyWithIndent",
+        "onCommand:copypaste-with-indent.cutWithIndent"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "copypaste-with-indent.helloWorld",
-				"title": "Hello World"
+				"command": "copypaste-with-indent.pasteWithIndent",
+				"title": "Paste With Indent"
+			},
+			{
+				"command": "copypaste-with-indent.copyWithIndent",
+				"title": "Copy With Indent"
+			},
+			{
+				"command": "copypaste-with-indent.cutWithIndent",
+				"title": "Cut With Indent"
 			}
-		]
+		],
+		"menus": {
+			"editor/context": [
+				{"command": "copypaste-with-indent.pasteWithIndent"},
+				{"command": "copypaste-with-indent.copyWithIndent" },
+				{"command": "copypaste-with-indent.cutWithIndent"  }
+			],
+			"editor/title": [
+				{"command": "copypaste-with-indent.pasteWithIndent"},
+				{"command": "copypaste-with-indent.copyWithIndent" },
+				{"command": "copypaste-with-indent.cutWithIndent"  }
+			]
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run package",

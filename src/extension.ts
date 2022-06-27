@@ -1,26 +1,17 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
+import * as vsc from 'vscode';
+import pasteWithIndent from "./commands/pasteWithIndent";
+import copyWithIndent  from "./commands/copyWithIndent";
+import cutWithIndent   from "./commands/cutWithIndent";
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
-export function activate(context: vscode.ExtensionContext) {
-	
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "copypaste-with-indent" is now active!');
+export function activate(context: vsc.ExtensionContext) {
+	const commands = [
+		vsc.commands.registerCommand('copypaste-with-indent.pasteWithIndent', pasteWithIndent),
+		vsc.commands.registerCommand('copypaste-with-indent.copyWithIndent' , copyWithIndent ),
+		vsc.commands.registerCommand('copypaste-with-indent.cutWithIndent'  , cutWithIndent  ),
+		// vsc.commands.registerTextEditorCommand('my-command', (tEditor: vsc.TextEditor, edit: vsc.TextEditorEdit, ...args: any[]) => {}),
+	];
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('copypaste-with-indent.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from copypaste-with-indent!');
-	});
-
-	context.subscriptions.push(disposable);
+	context.subscriptions.push(...commands);
 }
 
-// this method is called when your extension is deactivated
 export function deactivate() {}
