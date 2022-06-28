@@ -1,11 +1,24 @@
 import * as vsc from "vscode";
+import globalStorage from "../globalStorage";
 
 export {
+	saveCopied,
 	getTrimmedLines,
 	getFirstLIndent,
 	rangeToOffsets,
 	offsetsToRange,
 };
+
+async function saveCopied(tEditor: vsc.TextEditor): Promise<[string, string]> {
+	const 
+		text   = await vsc.env.clipboard.readText(),
+		indent = getFirstLIndent(tEditor, tEditor.selection.start);
+	globalStorage.copied = {
+		text,
+		indent,
+	};
+	return [text, indent];
+}
 
 function getTrimmedLines(text: string): string[] {
 	const 

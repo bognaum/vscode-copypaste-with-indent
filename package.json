@@ -12,13 +12,60 @@
 		"Other"
 	],
 	"activationEvents": [
+        "onCommand:copypaste-with-indent.paste",
+        "onCommand:copypaste-with-indent.copy",
+        "onCommand:copypaste-with-indent.cut",
         "onCommand:copypaste-with-indent.pasteWithIndent",
         "onCommand:copypaste-with-indent.copyWithIndent",
         "onCommand:copypaste-with-indent.cutWithIndent"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
+		"keybindings": [
+			{
+				"key": "ctrl+x",
+				"command": "copypaste-with-indent.cut",
+				"when": "editorTextFocus && !editorReadonly"
+			},
+			{
+				"key": "ctrl+c",
+				"command": "copypaste-with-indent.copy",
+				"when": "editorTextFocus && !editorReadonly"
+			},
+			{
+				"key": "ctrl+v",
+				"command": "copypaste-with-indent.paste",
+				"when": "editorTextFocus && !editorReadonly"
+			},
+			{
+				"key": "ctrl+shift+x",
+				"command": "copypaste-with-indent.cutWithIndent",
+				"when": "editorTextFocus && !editorReadonly"
+			},
+			{
+				"key": "ctrl+shift+c",
+				"command": "copypaste-with-indent.copyWithIndent",
+				"when": "editorTextFocus && !editorReadonly"
+			},
+			{
+				"key": "ctrl+shift+v",
+				"command": "copypaste-with-indent.pasteWithIndent",
+				"when": "editorTextFocus && !editorReadonly"
+			}
+		],
 		"commands": [
+			{
+				"command": "copypaste-with-indent.paste",
+				"title": "Paste"
+			},
+			{
+				"command": "copypaste-with-indent.copy",
+				"title": "Copy"
+			},
+			{
+				"command": "copypaste-with-indent.cut",
+				"title": "Cut"
+			},
 			{
 				"command": "copypaste-with-indent.pasteWithIndent",
 				"title": "Paste With Indent"
@@ -34,11 +81,17 @@
 		],
 		"menus": {
 			"editor/context": [
+				{"command": "copypaste-with-indent.paste"          },
+				{"command": "copypaste-with-indent.copy"           },
+				{"command": "copypaste-with-indent.cut"            },
 				{"command": "copypaste-with-indent.pasteWithIndent"},
 				{"command": "copypaste-with-indent.copyWithIndent" },
 				{"command": "copypaste-with-indent.cutWithIndent"  }
 			],
 			"editor/title": [
+				{"command": "copypaste-with-indent.paste"          },
+				{"command": "copypaste-with-indent.copy"           },
+				{"command": "copypaste-with-indent.cut"            },
 				{"command": "copypaste-with-indent.pasteWithIndent"},
 				{"command": "copypaste-with-indent.copyWithIndent" },
 				{"command": "copypaste-with-indent.cutWithIndent"  }

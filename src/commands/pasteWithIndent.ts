@@ -3,16 +3,11 @@ import globalStorage from "../globalStorage";
 import {
 	getTrimmedLines,
 	getFirstLIndent,
-	rangeToOffsets,
-	offsetsToRange,
 } from "../functions/base";
 
 export default async function pasteWithIndent() {
 	const tEditor = vsc.window.activeTextEditor;
 	if (tEditor) {
-		/* const 
-			text         = await vsc.env.clipboard.readText(),
-			trimmedLines = getTrimmedLines(text); */
 
 		let text = await vsc.env.clipboard.readText();
 		if (text === globalStorage.copied.text) {
@@ -33,16 +28,7 @@ export default async function pasteWithIndent() {
 		await vsc.env.clipboard.writeText(shiftedText);
 		await vsc.commands.executeCommand("editor.action.clipboardPasteAction");
 	} else {
-		vsc.window.showWarningMessage("copypaste-with-indent.pasteWithIndent: \n can't get 'tEditor'.");
+		vsc.window.showWarningMessage("copypaste-with-indent.pasteWithIndent: can't get 'tEditor'.");
 	}
 }
 
-function shiftText(text: string, tEditor: vsc.TextEditor): string {
-	const trimmedLines = getTrimmedLines(text);
-	if (tEditor.selections.length === trimmedLines.length) {
-		return trimmedLines.join("\n");
-	} else {
-		const newIndent = getFirstLIndent(tEditor, tEditor.selection.start);
-		return trimmedLines.join("\n" + newIndent);
-	}
-}
