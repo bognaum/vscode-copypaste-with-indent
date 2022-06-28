@@ -9,7 +9,6 @@ export default async function copyWithIndent() {
 		await vsc.commands.executeCommand("editor.action.clipboardCopyAction");
 		const [text] = await saveCopied(tEditor);
 		await vsc.env.clipboard.writeText(text);
-		vsc.window.showInformationMessage("Copied with indent.");
 	} else {
 		vsc.window.showWarningMessage("copypaste-with-indent.copy: can't get 'tEditor'.");
 	}

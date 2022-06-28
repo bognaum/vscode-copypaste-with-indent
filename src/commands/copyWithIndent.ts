@@ -12,7 +12,6 @@ export default async function copyWithIndent() {
 			[text, firstLineIndent] = await saveCopied(tEditor),
 			trimmedText  = getTrimmedLines(firstLineIndent + text).join("\n");
 		await vsc.env.clipboard.writeText(trimmedText);
-		vsc.window.showInformationMessage("Copied with indent.");
 	} else {
 		vsc.window.showWarningMessage("copypaste-with-indent.copyWithIndent: can't get 'tEditor'.");
 	}

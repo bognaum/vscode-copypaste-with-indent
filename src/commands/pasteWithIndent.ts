@@ -12,8 +12,8 @@ export default async function pasteWithIndent() {
 		let text = await vsc.env.clipboard.readText();
 		if (text === globalStorage.copied.text) {
 			text = globalStorage.copied.indent + text;
-			const ind = globalStorage.copied.indent.replace(/\t/g, "<__>").replace(/ /g, "-");
-			vsc.window.showInformationMessage( `Added first indent '${ind}'` );
+			/* const ind = globalStorage.copied.indent.replace(/\t/g, "<#>").replace(/ /g, "-");
+			vsc.window.showInformationMessage( `Added first indent '${ind}'` ); */
 		}
 		const trimmedLines = getTrimmedLines(text);
 		console.log(`trimmedLines.join("\n") >>`, trimmedLines.join("\n"));
