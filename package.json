@@ -17,7 +17,9 @@
         "onCommand:copypaste-with-indent.cut",
         "onCommand:copypaste-with-indent.pasteWithIndent",
         "onCommand:copypaste-with-indent.copyWithIndent",
-        "onCommand:copypaste-with-indent.cutWithIndent"
+        "onCommand:copypaste-with-indent.cutWithIndent",
+        "onCommand:copypaste-with-indent.selectToLineStart",
+        "onCommand:copypaste-with-indent.selectToLineEnd"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
@@ -51,6 +53,16 @@
 				"key": "ctrl+shift+v",
 				"command": "copypaste-with-indent.pasteWithIndent",
 				"when": "editorTextFocus && !editorReadonly"
+			},
+			{
+				"key": "alt+shift+up",
+				"command": "copypaste-with-indent.selectToLineStart",
+				"when": "editorTextFocus && !editorReadonly"
+			},
+			{
+				"key": "alt+shift+down",
+				"command": "copypaste-with-indent.selectToLineEnd",
+				"when": "editorTextFocus && !editorReadonly"
 			}
 		],
 		"commands": [
@@ -77,6 +89,14 @@
 			{
 				"command": "copypaste-with-indent.cutWithIndent",
 				"title": "Cut With Indent"
+			},
+			{
+				"command": "copypaste-with-indent.selectToLineStart",
+				"title": "Select To Start of Line"
+			},
+			{
+				"command": "copypaste-with-indent.selectToLineEnd",
+				"title": "Select To End of Line"
 			}
 		],
 		"menus": {
@@ -97,7 +117,9 @@
 				{"command": "copypaste-with-indent.cut"            , "group": "1"},
 				{"command": "copypaste-with-indent.pasteWithIndent", "group": "2"},
 				{"command": "copypaste-with-indent.copyWithIndent" , "group": "2"},
-				{"command": "copypaste-with-indent.cutWithIndent"  , "group": "2"}
+				{"command": "copypaste-with-indent.cutWithIndent"  , "group": "2"},
+				{"command": "copypaste-with-indent.selectToLineStart", "group": "3"},
+				{"command": "copypaste-with-indent.selectToLineEnd"  , "group": "3"}
 			]
 		},
 		"submenus": [
