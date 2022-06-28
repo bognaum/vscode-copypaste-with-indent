@@ -3,7 +3,7 @@
 	"displayName": "Copypaste With Indent",
 	"description": "Cut, copy and paste a mani lines with indentation.",
 	"publisher": "Bognaum",
-	"icon": "IMG/icon-02.jpg",
+	"icon": "IMG/icon-03.jpg",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.68.0"
