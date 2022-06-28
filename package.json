@@ -81,22 +81,31 @@
 		],
 		"menus": {
 			"editor/context": [
-				{"command": "copypaste-with-indent.paste"          },
-				{"command": "copypaste-with-indent.copy"           },
-				{"command": "copypaste-with-indent.cut"            },
-				{"command": "copypaste-with-indent.pasteWithIndent"},
-				{"command": "copypaste-with-indent.copyWithIndent" },
-				{"command": "copypaste-with-indent.cutWithIndent"  }
+				{"command": "copypaste-with-indent.paste"          , "group": "1"},
+				{"command": "copypaste-with-indent.copy"           , "group": "1"},
+				{"command": "copypaste-with-indent.cut"            , "group": "1"},
+				{"command": "copypaste-with-indent.pasteWithIndent", "group": "1"},
+				{"command": "copypaste-with-indent.copyWithIndent" , "group": "1"},
+				{"command": "copypaste-with-indent.cutWithIndent"  , "group": "1"}
 			],
 			"editor/title": [
-				{"command": "copypaste-with-indent.paste"          },
-				{"command": "copypaste-with-indent.copy"           },
-				{"command": "copypaste-with-indent.cut"            },
-				{"command": "copypaste-with-indent.pasteWithIndent"},
-				{"command": "copypaste-with-indent.copyWithIndent" },
-				{"command": "copypaste-with-indent.cutWithIndent"  }
+				{"submenu": "copypaste-with-indent", "group": "0"}
+			],
+			"copypaste-with-indent": [
+				{"command": "copypaste-with-indent.paste"          , "group": "1"},
+				{"command": "copypaste-with-indent.copy"           , "group": "1"},
+				{"command": "copypaste-with-indent.cut"            , "group": "1"},
+				{"command": "copypaste-with-indent.pasteWithIndent", "group": "2"},
+				{"command": "copypaste-with-indent.copyWithIndent" , "group": "2"},
+				{"command": "copypaste-with-indent.cutWithIndent"  , "group": "2"}
 			]
-		}
+		},
+		"submenus": [
+			{
+				"id": "copypaste-with-indent",
+				"label": "Copypaste With Indent ..."
+			}
+		]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run package",
