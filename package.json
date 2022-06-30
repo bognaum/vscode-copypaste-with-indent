@@ -117,11 +117,7 @@
 				{"command": "copypaste-with-indent.cutWithIndent"  , "group": "1"}
 			],
 			"editor/title": [
-				{
-					"submenu": "copypaste-with-indent", 
-					"when": "editorTextFocus",
-					"group": "0"
-				}
+				{"submenu": "copypaste-with-indent", "group": "0"}
 			],
 			"copypaste-with-indent": [
 				{"command": "copypaste-with-indent.paste"          , "group": "1"},
