@@ -9,7 +9,8 @@ export default async function pasteWithIndent() {
 	const tEditor = vsc.window.activeTextEditor;
 	if (tEditor) {
 
-		let text = await vsc.env.clipboard.readText();
+		const primText = await vsc.env.clipboard.readText();
+		let text = primText;
 		if (text === globalStorage.copied.text) {
 			text = globalStorage.copied.indent + text;
 			/* const ind = globalStorage.copied.indent.replace(/\t/g, "<#>").replace(/ /g, "-");
@@ -27,6 +28,7 @@ export default async function pasteWithIndent() {
 		}
 		await vsc.env.clipboard.writeText(shiftedText);
 		await vsc.commands.executeCommand("editor.action.clipboardPasteAction");
+		await vsc.env.clipboard.writeText(primText);
 	} else {
 		vsc.window.showWarningMessage("copypaste-with-indent.pasteWithIndent: can't get 'tEditor'.");
 	}
