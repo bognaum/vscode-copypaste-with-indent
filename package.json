@@ -68,35 +68,43 @@
 		"commands": [
 			{
 				"command": "copypaste-with-indent.paste",
-				"title": "Paste"
+				"title": "Paste",
+				"enablement": "editorTextFocus && !editorReadonly"
 			},
 			{
 				"command": "copypaste-with-indent.copy",
-				"title": "Copy"
+				"title": "Copy",
+				"enablement": "editorTextFocus"
 			},
 			{
 				"command": "copypaste-with-indent.cut",
-				"title": "Cut"
+				"title": "Cut",
+				"enablement": "editorTextFocus && !editorReadonly"
 			},
 			{
 				"command": "copypaste-with-indent.pasteWithIndent",
-				"title": "Paste With Indent"
+				"title": "Paste With Indent",
+				"enablement": "editorTextFocus && !editorReadonly"
 			},
 			{
 				"command": "copypaste-with-indent.copyWithIndent",
-				"title": "Copy With Indent"
+				"title": "Copy With Indent",
+				"enablement": "editorTextFocus"
 			},
 			{
 				"command": "copypaste-with-indent.cutWithIndent",
-				"title": "Cut With Indent"
+				"title": "Cut With Indent",
+				"enablement": "editorTextFocus && !editorReadonly"
 			},
 			{
 				"command": "copypaste-with-indent.selectToLineStart",
-				"title": "Select To Start of Line"
+				"title": "Select To Start of Line",
+				"enablement": "editorTextFocus"
 			},
 			{
 				"command": "copypaste-with-indent.selectToLineEnd",
-				"title": "Select To End of Line"
+				"title": "Select To End of Line",
+				"enablement": "editorTextFocus"
 			}
 		],
 		"menus": {
@@ -109,7 +117,11 @@
 				{"command": "copypaste-with-indent.cutWithIndent"  , "group": "1"}
 			],
 			"editor/title": [
-				{"submenu": "copypaste-with-indent", "group": "0"}
+				{
+					"submenu": "copypaste-with-indent", 
+					"when": "editorTextFocus",
+					"group": "0"
+				}
 			],
 			"copypaste-with-indent": [
 				{"command": "copypaste-with-indent.paste"          , "group": "1"},
