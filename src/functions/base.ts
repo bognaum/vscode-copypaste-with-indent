@@ -1,5 +1,5 @@
 import * as vsc from "vscode";
-import globalStorage from "../globalStorage";
+import {getStorage} from "../globalState";
 
 export {
 	saveCopied,
@@ -13,10 +13,8 @@ async function saveCopied(tEditor: vsc.TextEditor): Promise<[string, string]> {
 	const 
 		text   = await vsc.env.clipboard.readText(),
 		indent = getFirstLIndent(tEditor, tEditor.selection.start);
-	globalStorage.copied = {
-		text,
-		indent,
-	};
+	getStorage().update("copiedText", text);
+	getStorage().update("copiedIndent", indent);
 	return [text, indent];
 }
 

@@ -7,8 +7,10 @@ import copyWithIndent  from "./commands/copyWithIndent";
 import cutWithIndent   from "./commands/cutWithIndent";
 import selectToLineStart from "./commands/selectToLineStart";
 import selectToLineEnd   from "./commands/selectToLineEnd";
+import {setStorage}      from "./globalState";
 
 export function activate(context: vsc.ExtensionContext) {
+	setStorage(context.globalState);
 	const commands = [
 		vsc.commands.registerCommand('copypaste-with-indent.cut'            , cut            ),
 		vsc.commands.registerCommand('copypaste-with-indent.copy'           , copy           ),
