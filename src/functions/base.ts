@@ -27,9 +27,11 @@ function getTrimmedLines(text: string): string[] {
 }
 
 function getMinIndentLength(lines: string[]): number {
-	return lines.filter(v => !v.match(/^\s*$/))
-		.map(v => (v.match(/^\s*/) || [""])[0].length)
-		.sort()[0] || 0;
+	const 
+		indentLengths = lines.filter(v => !v.match(/^\s*$/))
+		.map(v => (v.match(/^\s*/) || [""])[0].length),
+		min = Math.min(...indentLengths);
+	return min;
 }
 
 function getFirstLIndent(tEditor: vsc.TextEditor, pos: vsc.Position): string {
